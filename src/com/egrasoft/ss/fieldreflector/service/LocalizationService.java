@@ -7,7 +7,7 @@ public class LocalizationService {
     private static final String RESOURCE_BUNDLE_LOCATION = "fieldreflector/localization/locales";
 
     public String getString(String key) {
-        return ResourceBundle.getBundle(RESOURCE_BUNDLE_LOCATION).getString(key);
+        return getCurrentBundle().getString(key);
     }
 
     public String getString(String key, Locale locale) {

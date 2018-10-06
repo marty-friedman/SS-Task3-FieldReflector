@@ -27,6 +27,7 @@ public class FrameService {
         URL view = getClass().getClassLoader().getResource(location);
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(view));
         loader.setController(controller);
+        loader.setClassLoader(getClass().getClassLoader());
         loader.setResources(localizationService.getCurrentBundle());
         return loader.load();
     }
