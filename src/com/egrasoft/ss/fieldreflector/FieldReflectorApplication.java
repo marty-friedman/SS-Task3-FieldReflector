@@ -9,7 +9,7 @@ public class FieldReflectorApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        frameService.initMainFrame(stage);
+        frameService.loadMainFrame(stage);
         stage.show();
     }
 

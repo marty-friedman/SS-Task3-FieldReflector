@@ -38,8 +38,8 @@
       </MenuBar>
       <ClassListView fx:id="classList" layoutX="22.0" layoutY="66.0" prefHeight="702.0" prefWidth="331.0" />
       <Label alignment="CENTER" layoutX="22.0" layoutY="36.0" prefHeight="29.0" prefWidth="331.0" text="%label.classes" />
-      <Button layoutX="22.0" layoutY="778.0" mnemonicParsing="false" onAction="#doAddClass" prefHeight="26.0" prefWidth="124.0" text="%button.addclass" />
-      <Button layoutX="229.0" layoutY="778.0" mnemonicParsing="false" onAction="#doNewInstance" prefHeight="26.0" prefWidth="124.0" text="%button.newinstance" />
+      <Button layoutX="22.0" layoutY="778.0" mnemonicParsing="false" onAction="#doAddClass" prefHeight="26.0" prefWidth="151.0" text="%button.addclass" />
+      <Button layoutX="202.0" layoutY="778.0" mnemonicParsing="false" onAction="#doNewInstance" prefHeight="26.0" prefWidth="151.0" text="%button.newinstance" />
       <FieldTableView fx:id="fieldTable" layoutX="371.0" layoutY="36.0" prefHeight="767.0" prefWidth="751.0" />
    </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ package com.egrasoft.ss.fieldreflector.service;
 
 import com.egrasoft.ss.fieldreflector.controller.MainFrameController;
 import com.egrasoft.ss.fieldreflector.util.Constants;
+import com.egrasoft.ss.fieldreflector.util.PersistenceHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,19 +18,25 @@ public class FrameService {
     private FrameService() {
     }
 
-    public void initMainFrame(Stage stage) throws IOException {
-        Parent root = loadView(Constants.Location.MAIN_FRAME_VIEW_LOCATION, new MainFrameController());
-        stage.setTitle(localizationService.getString(Constants.Frame.MAIN_FRAME_TITLE_KEY));
-        stage.setScene(new Scene(root));
+    public void loadMainFrame(Stage stage) throws IOException {
+        loadMainFrameInternal(stage, new MainFrameController(stage));
     }
 
-    private Parent loadView(String location, Object controller) throws IOException {
-        URL view = getClass().getClassLoader().getResource(location);
+    public void reloadMainFrame(Stage stage, PersistenceHelper helper) throws IOException {
+        MainFrameController controller = new MainFrameController(stage, helper);
+        loadMainFrameInternal(stage, controller);
+        controller.restoreFromPersistenceHelperAfterInit(helper);
+    }
+
+    private void loadMainFrameInternal(Stage stage, MainFrameController controller) throws IOException {
+        URL view = getClass().getClassLoader().getResource(Constants.Location.MAIN_FRAME_VIEW_LOCATION);
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(view));
         loader.setController(controller);
         loader.setClassLoader(getClass().getClassLoader());
         loader.setResources(localizationService.getCurrentBundle());
-        return loader.load();
+        Parent root = loader.load();
+        stage.setTitle(localizationService.getString(Constants.Frame.MAIN_FRAME_TITLE_KEY));
+        stage.setScene(new Scene(root));
     }
 
     public static FrameService getInstance() {

@@ -43,6 +43,8 @@ public class FieldTableView extends TableView<Field> {
     @SuppressWarnings("unchecked")
     public void initialize(Property<Object> instanceProperty) {
         instanceProperty.addListener((observable, oldValue, newValue) -> {
+            if (newValue == null)
+                return;
             this.setItems(FXCollections.observableArrayList(reflectionService.getFields(newValue)));
             this.getColumns().get(0).setVisible(false);
             this.getColumns().get(0).setVisible(true);

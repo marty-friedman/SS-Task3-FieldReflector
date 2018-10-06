@@ -29,8 +29,10 @@ public class ClassListView extends ListView<Class<?>> {
         this.setItems(new SortedList<>(classes, Comparator.comparing(Class::getCanonicalName)));
         this.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         this.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null)
+            if (newValue != null) {
+                instanceProperty.setValue(null);
                 instanceProperty.setValue(instanceMap.get(newValue));
+            }
         });
         prepareListView(this, Class::getCanonicalName);
     }

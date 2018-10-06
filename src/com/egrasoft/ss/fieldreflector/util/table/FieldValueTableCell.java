@@ -46,7 +46,7 @@ public class FieldValueTableCell extends TextFieldTableCell<Field, FieldValue<?>
                 item = FieldValue.convertRaw((String) item.getObject(), objClass);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
-                displayError(Constants.Dialogs.ERROR_CONVERSION_EXCEPTION);
+                displayError(Constants.Dialogs.ERROR_CONVERSION_EXCEPTION_TEXT_KEY);
                 item = getItem();
             }
         }
@@ -60,7 +60,7 @@ public class FieldValueTableCell extends TextFieldTableCell<Field, FieldValue<?>
                 item = getItem();
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
-                displayError(Constants.Dialogs.ERROR_CONVERSION_EXCEPTION);
+                displayError(Constants.Dialogs.ERROR_CONVERSION_EXCEPTION_TEXT_KEY);
                 item = getItem();
             }
         }
@@ -69,6 +69,7 @@ public class FieldValueTableCell extends TextFieldTableCell<Field, FieldValue<?>
 
     private void displayError(String key) {
         createMessageDialog(Alert.AlertType.ERROR, localizationService.getString(Constants.Dialogs.ERROR_TITLE_KEY),
-                localizationService.getString(key)).showAndWait();
+                localizationService.getString(key),
+                localizationService.getString(Constants.Dialogs.OK_TEXT)).showAndWait();
     }
 }

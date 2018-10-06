@@ -23,7 +23,11 @@ public class Constants {
         public static final String ERROR_ILLEGAL_ACCESS_CONTENT_TEXT_KEY = "dialog.error.illegalaccessexc.text";
         public static final String ERROR_CLASS_NOT_FOUND_CONTENT_TEXT_KEY = "dialog.error.classnotfoundexc.text";
         public static final String ERROR_INSTANTIATION_CONTENT_TEXT_KEY = "dialog.error.instantiationexc.text";
-        public static final String ERROR_CONVERSION_EXCEPTION = "dialog.error.conversion.text";
+        public static final String ERROR_CONVERSION_EXCEPTION_TEXT_KEY = "dialog.error.conversion.text";
+        public static final String LANGUAGE_CHANGE_TITLE_KEY = "dialog.languagechange.title";
+        public static final String LANGUAGE_CHANGE_TEXT_KEY = "dialog.languagechange.text";
+        public static final String OK_TEXT = "dialog.button.ok";
+        public static final String CANCEL_TEXT = "dialog.button.cancel";
     }
 
     public static class Location {
