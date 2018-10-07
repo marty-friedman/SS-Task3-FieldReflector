@@ -10,7 +10,6 @@ public class FieldReflectorApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         frameService.loadMainFrame(stage);
-        stage.show();
     }
 
     public static void main(String[] args) {

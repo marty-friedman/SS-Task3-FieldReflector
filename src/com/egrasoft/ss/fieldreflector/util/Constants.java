@@ -26,14 +26,15 @@ public class Constants {
         public static final String ERROR_CONVERSION_EXCEPTION_TEXT_KEY = "dialog.error.conversion.text";
         public static final String LANGUAGE_CHANGE_TITLE_KEY = "dialog.languagechange.title";
         public static final String LANGUAGE_CHANGE_TEXT_KEY = "dialog.languagechange.text";
-        public static final String OK_TEXT = "dialog.button.ok";
-        public static final String CANCEL_TEXT = "dialog.button.cancel";
+        public static final String OK_TEXT_KEY = "dialog.button.ok";
+        public static final String CANCEL_TEXT_KEY = "dialog.button.cancel";
     }
 
     public static class Location {
-        public static final String MAIN_FRAME_VIEW_LOCATION = "fieldreflector/view/main.fxml";
+        public static final String MAIN_FRAME_VIEW_LOCATION = "fieldreflector/view/Main.fxml";
         public static final String CLASS_LIST_VIEW_LOCATION = "fieldreflector/view/ClassListView.fxml";
         public static final String FIELD_TABLE_VIEW_LOCATION = "fieldreflector/view/FieldTableView.fxml";
+        public static final String CURRENCY_DATE_LABEL_LOCATION = "fieldreflector/view/CurrencyDateLabel.fxml";
     }
 
     public static class Table {

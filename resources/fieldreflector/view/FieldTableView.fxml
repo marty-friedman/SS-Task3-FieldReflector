@@ -3,8 +3,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 
-<fx:root type="TableView" xmlns="http://javafx.com/javafx"
-         xmlns:fx="http://javafx.com/fxml">
+<fx:root type="TableView" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <columns>
         <TableColumn fx:id="fieldNameColumn" prefWidth="251.0" text="%table.column.name" />
         <TableColumn fx:id="fieldTypeColumn" prefWidth="263.0" text="%table.column.type" />

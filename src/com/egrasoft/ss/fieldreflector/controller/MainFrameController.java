@@ -1,6 +1,7 @@
 package com.egrasoft.ss.fieldreflector.controller;
 
 import com.egrasoft.ss.fieldreflector.javafx.ClassListView;
+import com.egrasoft.ss.fieldreflector.javafx.CurrencyDateLabel;
 import com.egrasoft.ss.fieldreflector.javafx.FieldTableView;
 import com.egrasoft.ss.fieldreflector.service.FrameService;
 import com.egrasoft.ss.fieldreflector.service.LocalizationService;
@@ -33,6 +34,8 @@ public class MainFrameController {
     private ClassListView classList;
     @FXML
     private FieldTableView fieldTable;
+    @FXML
+    private CurrencyDateLabel currencyDateLabel;
 
     private Stage stage;
     private ObservableList<Class<?>> classes = FXCollections.observableArrayList();
@@ -53,8 +56,7 @@ public class MainFrameController {
     private void initialize() {
         classList.initialize(classes, instanceMap, instanceProperty);
         fieldTable.initialize(instanceProperty);
-        fieldTable.getColumns().get(0).setVisible(false);
-        fieldTable.getColumns().get(0).setVisible(true);
+        currencyDateLabel.initialize();
     }
 
     @FXML
@@ -67,7 +69,7 @@ public class MainFrameController {
         createMessageDialog(Alert.AlertType.INFORMATION,
                 localizationService.getString(Constants.Dialogs.ABOUT_TITLE_KEY),
                 localizationService.getString(Constants.Dialogs.ABOUT_CONTENT_TEXT_KEY),
-                localizationService.getString(Constants.Dialogs.OK_TEXT)).showAndWait();
+                localizationService.getString(Constants.Dialogs.OK_TEXT_KEY)).showAndWait();
     }
 
     @FXML
@@ -75,8 +77,8 @@ public class MainFrameController {
         createTextInputDialog(localizationService.getString(Constants.Dialogs.ADD_CLASS_TITLE_KEY),
                 localizationService.getString(Constants.Dialogs.ADD_CLASS_CONTENT_TEXT_KEY),
                 "com.example.SampleBean",
-                localizationService.getString(Constants.Dialogs.OK_TEXT),
-                localizationService.getString(Constants.Dialogs.CANCEL_TEXT)).showAndWait()
+                localizationService.getString(Constants.Dialogs.OK_TEXT_KEY),
+                localizationService.getString(Constants.Dialogs.CANCEL_TEXT_KEY)).showAndWait()
                 .map(name -> name.contains(".") ? name : "java.lang." + name)
                 .ifPresent(this::tryAddClass);
     }
@@ -93,14 +95,11 @@ public class MainFrameController {
         Optional<Language> language = createChoiceDialog(Arrays.asList(Language.values()), localizationService.getCurrentLanguage(),
                 localizationService.getString(Constants.Dialogs.LANGUAGE_CHANGE_TITLE_KEY),
                 localizationService.getString(Constants.Dialogs.LANGUAGE_CHANGE_TEXT_KEY),
-                localizationService.getString(Constants.Dialogs.OK_TEXT),
-                localizationService.getString(Constants.Dialogs.CANCEL_TEXT)).showAndWait();
+                localizationService.getString(Constants.Dialogs.OK_TEXT_KEY),
+                localizationService.getString(Constants.Dialogs.CANCEL_TEXT_KEY)).showAndWait();
         if (language.isPresent() && language.get() != localizationService.getCurrentLanguage()) {
             localizationService.setCurrentLanguage(language.get());
-            Stage newStage = new Stage();
-            frameService.reloadMainFrame(newStage, storeToPersistenceHelper());
-            newStage.show();
-            stage.close();
+            frameService.reloadMainFrame(stage, storeToPersistenceHelper());
         }
     }
 
@@ -113,7 +112,7 @@ public class MainFrameController {
             createMessageDialog(Alert.AlertType.ERROR,
                     localizationService.getString(Constants.Dialogs.ERROR_TITLE_KEY),
                     localizationService.getString(Constants.Dialogs.ERROR_CLASS_NOT_FOUND_CONTENT_TEXT_KEY),
-                    localizationService.getString(Constants.Dialogs.OK_TEXT)).showAndWait();
+                    localizationService.getString(Constants.Dialogs.OK_TEXT_KEY)).showAndWait();
         }
 
         if (objClass != null)
@@ -141,7 +140,7 @@ public class MainFrameController {
             createMessageDialog(Alert.AlertType.ERROR,
                     localizationService.getString(Constants.Dialogs.ERROR_TITLE_KEY),
                     localizationService.getString(errorKey),
-                    localizationService.getString(Constants.Dialogs.OK_TEXT)).showAndWait();
+                    localizationService.getString(Constants.Dialogs.OK_TEXT_KEY)).showAndWait();
     }
 
     private void restoreFromPersistenceHelperBeforeInit(PersistenceHelper helper) {

@@ -20,11 +20,15 @@ public class FrameService {
 
     public void loadMainFrame(Stage stage) throws IOException {
         loadMainFrameInternal(stage, new MainFrameController(stage));
+        stage.show();
     }
 
-    public void reloadMainFrame(Stage stage, PersistenceHelper helper) throws IOException {
-        MainFrameController controller = new MainFrameController(stage, helper);
-        loadMainFrameInternal(stage, controller);
+    public void reloadMainFrame(Stage oldStage, PersistenceHelper helper) throws IOException {
+        Stage newStage = new Stage();
+        MainFrameController controller = new MainFrameController(newStage, helper);
+        loadMainFrameInternal(newStage, controller);
+        newStage.show();
+        oldStage.close();
         controller.restoreFromPersistenceHelperAfterInit(helper);
     }
 

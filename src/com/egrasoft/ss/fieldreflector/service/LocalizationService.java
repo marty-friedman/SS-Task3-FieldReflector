@@ -2,6 +2,9 @@ package com.egrasoft.ss.fieldreflector.service;
 
 import com.egrasoft.ss.fieldreflector.util.Language;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Currency;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -24,6 +27,14 @@ public class LocalizationService {
 
     public Language getCurrentLanguage() {
         return currentLanguage;
+    }
+
+    public Currency getDefaultCurrency() {
+        return Currency.getInstance(currentLanguage.getLocale());
+    }
+
+    public DateTimeFormatter getDateTimeFormatter() {
+        return DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).withLocale(currentLanguage.getLocale());
     }
 
     public void setCurrentLanguage(Language currentLanguage) {

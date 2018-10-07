@@ -70,6 +70,6 @@ public class FieldValueTableCell extends TextFieldTableCell<Field, FieldValue<?>
     private void displayError(String key) {
         createMessageDialog(Alert.AlertType.ERROR, localizationService.getString(Constants.Dialogs.ERROR_TITLE_KEY),
                 localizationService.getString(key),
-                localizationService.getString(Constants.Dialogs.OK_TEXT)).showAndWait();
+                localizationService.getString(Constants.Dialogs.OK_TEXT_KEY)).showAndWait();
     }
 }
