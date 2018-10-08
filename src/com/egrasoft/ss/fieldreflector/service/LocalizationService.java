@@ -1,5 +1,6 @@
 package com.egrasoft.ss.fieldreflector.service;
 
+import com.egrasoft.ss.fieldreflector.util.Constants;
 import com.egrasoft.ss.fieldreflector.util.Language;
 
 import java.time.format.DateTimeFormatter;
@@ -11,7 +12,7 @@ import java.util.ResourceBundle;
 public class LocalizationService {
     private static final String RESOURCE_BUNDLE_LOCATION = "fieldreflector/localization/locales";
 
-    private Language currentLanguage = Language.RUSSIAN;
+    private Language currentLanguage = Constants.Localization.DEFAULT_LANGUAGE;
 
     public String getString(String key) {
         return getCurrentBundle().getString(key);

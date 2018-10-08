@@ -3,6 +3,7 @@ package com.egrasoft.ss.fieldreflector.util;
 import javafx.util.StringConverter;
 import javafx.util.converter.*;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -41,19 +42,24 @@ public class Constants {
         public static final String VALUE_NOT_ACCESSIBLE = "table.cell.notaccessible";
     }
 
+    public static class Localization {
+        public static final Language DEFAULT_LANGUAGE = Language.ENGLISH;
+    }
+
     public static class Config {
-        public static final Map<Class<?>, StringConverter<?>> CONVERTERS = Stream.<Map.Entry<Class<?>, StringConverter<?>>>of(
-                entry(Boolean.class, new BooleanStringConverter()),
-                entry(Long.class, new LongStringConverter()),
-                entry(Integer.class, new IntegerStringConverter()),
-                entry(Float.class, new FloatStringConverter()),
-                entry(Double.class, new DoubleStringConverter()),
-                entry(String.class, new DefaultStringConverter()),
-                entry(boolean.class, new BooleanStringConverter()),
-                entry(long.class, new LongStringConverter()),
-                entry(int.class, new IntegerStringConverter()),
-                entry(float.class, new FloatStringConverter()),
-                entry(double.class, new DoubleStringConverter())
-        ).collect(entriesToMap());
+        public static final Map<Class<?>, StringConverter<?>> CONVERTERS = Collections.unmodifiableMap(
+                Stream.<Map.Entry<Class<?>, StringConverter<?>>>of(
+                        entry(Boolean.class, new BooleanStringConverter()),
+                        entry(Long.class, new LongStringConverter()),
+                        entry(Integer.class, new IntegerStringConverter()),
+                        entry(Float.class, new FloatStringConverter()),
+                        entry(Double.class, new DoubleStringConverter()),
+                        entry(String.class, new DefaultStringConverter()),
+                        entry(boolean.class, new BooleanStringConverter()),
+                        entry(long.class, new LongStringConverter()),
+                        entry(int.class, new IntegerStringConverter()),
+                        entry(float.class, new FloatStringConverter()),
+                        entry(double.class, new DoubleStringConverter())
+                ).collect(entriesToMap()));
     }
 }
